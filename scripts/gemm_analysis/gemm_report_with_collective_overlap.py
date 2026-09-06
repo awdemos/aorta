@@ -12,7 +12,7 @@ import pandas as pd
 import openpyxl
 import argparse
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 def calculate_unique_overlap_duration(intervals: List[Tuple[float, float]]) -> float:
     """
@@ -65,11 +65,9 @@ def load_collective_data(collective_file: Path) -> pd.DataFrame:
 
         # Extract data from relevant columns
         data = []
-        headers = None
 
         for i, row in enumerate(sheet.iter_rows(values_only=True)):
             if i == 0:
-                headers = row
                 continue
 
             if row and len(row) > 16:  # Ensure we have enough columns
